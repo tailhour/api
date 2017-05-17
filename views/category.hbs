@@ -1,0 +1,42 @@
+ {{#section 'scripts'}}
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-font" src="https://cdn.ampproject.org/v0/amp-font-0.1.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+
+    <link rel="stylesheet" href="{{ROOT}}include/css/amp-custom.css" />
+{{/section}}
+
+<!-- START BODY SECTION -->
+<main>
+  <section>
+    <ul>
+      {{#each items}}
+      <li class="lheight">
+        <h3>{{this.title}}</h3>
+        <a href="{{../ROOT}}items/{{this._id}}">
+          <amp-img src="{{../ROOT}}images/{{../category}}/sm/{{this.image}}.jpg" srcset="{{../ROOT}}images/{{../category}}/{{this.image}}.jpg 960w, {{../ROOT}}images/{{../category}}/m/{{this.image}}.jpg 640w, {{../ROOT}}images/{{../category}}/sm/{{this.image}}.jpg 320w" width="480" height="320" layout="responsive" alt="Bird">
+          </amp-img>
+        </a>
+        <div class="elip-box"><span class="elips">{{this.text}}</span></div>
+      </li>
+      {{/each}}
+    </ul>
+
+    {{# if pages }}
+    <ul class="pages">
+      {{#each pages}}
+        {{# if this.active }}
+          <li><a href="{{../ROOT}}items/{{../category}}/{{this.active}}" class="active">{{this.active}}</a></li>
+        {{else}}
+          <li><a href="{{../ROOT}}items/{{../category}}/{{this}}">{{this}}</a></li>
+        {{/if}}
+      {{/each}}
+    </ul>
+    {{/if}}
+  </section>
+</main>
+

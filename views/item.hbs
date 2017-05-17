@@ -1,0 +1,27 @@
+{{#section 'scripts'}}
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-font" src="https://cdn.ampproject.org/v0/amp-font-0.1.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+
+    <link rel="stylesheet" href="{{ROOT}}include/css/amp-custom.css" />
+{{/section}}
+
+<main>
+  <article>
+  	{{# if item }}
+     	<h1>{{item.title}}</h1>
+      	{{# if item.image }}
+        <figure>
+	       <amp-img src="{{ROOT}}images/{{category}}/sm/{{item.image}}.jpg" srcset="{{ROOT}}images/{{category}}/{{item.image}}.jpg 960w, {{ROOT}}images/{{category}}/m/{{item.image}}.jpg 640w, {{ROOT}}images/{{category}}/sm/{{item.image}}.jpg 320w" width="960" height="639" layout="responsive" alt="The cat 1">
+		        </amp-img>
+		        <figcaption>Fig.1 - The cat watch.</figcaption>
+		      </figure>
+        	{{/if}}
+        	<p>{{{item.text}}}</p>
+		{{/if}}
+	</article>
+</main>

@@ -1,0 +1,38 @@
+{{#section 'scripts'}}
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-font" src="https://cdn.ampproject.org/v0/amp-font-0.1.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+
+    <link rel="stylesheet" href="include/css/amp-custom.css" />
+{{/section}}
+
+<!-- START BODY SECTION -->
+<main>
+    <section>
+        <ul>
+        {{#each items}}
+            {{#if this}}
+            <li>
+                <h3>{{@key}} <a href='{{../ROOT}}items/{{@key}}'>({{this.length}})</a></h3>
+                <amp-carousel width="480" height="320" layout="responsive" type="slides">
+                {{#each this}}
+                    <div  class="indexp">
+                        <a href="{{../../ROOT}}items/{{this._id}}">
+                        <amp-img src="{{../../ROOT}}images/{{@../key}}/sm/{{this.image}}.jpg" srcset="{{../../ROOT}}images/{{@../key}}/{{this.image}}.jpg 960w, {{../../ROOT}}images/{{@../key}}/m/{{this.image}}.jpg 640w, {{../../ROOT}}images/{{@../key}}/sm/{{this.image}}.jpg 320w" width="480" height="320" layout="responsive" alt="Bird">
+                        </amp-img>
+                        <h2>{{this.title}}</h2>
+                        </a>
+                    </div>
+                {{/each}}
+            </amp-carousel>
+            </li>
+            {{/if}}
+        {{/each}}
+
+        </ul>
+    </section>
+</main>

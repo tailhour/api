@@ -1,0 +1,116 @@
+<!doctype html>
+<html amp>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+  {{{_sections.scripts}}}
+
+  <link rel="canonical" href="http://localhost/tailhour.com/">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Montserrat" rel="stylesheet">
+
+<style amp-custom>
+  @font-face {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: 400;
+    src: url({{ROOT}}/include/css/fonts.ttf) format('truetype');
+  }
+
+   .icons {
+   		font-family: "fontello", serif, sans-serif;
+   		line-height: 1em;
+   		webkit-font-smoothing: antialiased;
+   		text-transform: none;
+   		cursor: pointer;
+   }
+
+	.icon-glass:before { content: '\e800'; }
+	.icon-user:before { content: '\e801'; }
+	.icon-cancel:before { content: '\e802'; }
+	.icon-menu:before { content: '\f0c9'; }
+
+  .icon-cancel {
+    margin: 10px;
+    padding: 10px;
+  }
+
+ .float-right { float: right; }
+ .float-left { float: left; }
+
+  </style>
+
+
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+</head>
+<body>
+  <amp-font
+    layout="nodisplay"
+    font-family="fontello"
+    timeout="1000"
+    on-error-remove-class="fontello-loading"
+    on-error-add-class="fontello-missing"
+    on-load-remove-class="fontello-loading"
+    on-load-add-class="fontello-loaded">
+  </amp-font>
+  <amp-sidebar id="mobilemenu" layout="nodisplay">
+    <a on="tap:mobilemenu.toggle" class="abs icons icon-cancel float-right"></a>
+    <ul>
+      {{#each CATS}}
+        <li>
+          <a href="{{../ROOT}}items/{{this}}" class="{{this}}-menu">{{this}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </amp-sidebar>
+  <amp-sidebar id="usermenu" layout="nodisplay" side="right">
+    <a on="tap:usermenu.toggle" class="abs icons icon-cancel float-right"></a>
+    <ul>
+      <li><a href='bird'>Log in</a></li>
+      <li><a href='cat'>Sign up</a></li>
+    </ul>
+  </amp-sidebar>
+
+  <header>
+    <a id="logo" href="/" class="abs">TAILHOUR</a>
+    <h2 class="abs slogan">An hour with your pets</h2>
+    <a id="mobile-menu" on="tap:mobilemenu.toggle" class="abs icons icon-menu"></a>
+    <form method="POST" action="/search" target="_top">
+      <input name="search" type="search" placeholder="Search" class="abs" >
+      <input type="submit" value="?" class="abs" >
+    </form>
+    <a id="user-menu" on="tap:usermenu.toggle" class="abs icons icon-user"></a>
+  </header>
+
+  {{{ body }}}
+
+  <footer>
+    <ul>
+      <li>
+        <form method="POST" action-xhr="{{ROOT}}subscribe" target="_top">
+          <label for='subscribe'>Stay in touch with our pets stories:</label>
+          <input name="sub-email" id="subscribe" type="email" placeholder="Subscribe" required><input type="submit" value="Subscribe">
+        </form>
+      </li>
+      <li>
+        <ul class="footer-menu">
+          <li><a href="{{ROOT}}pages/about">About us</a></li>
+          <li><a href="{{ROOT}}pages/ads">Advertise</a></li>
+          <li><a href="{{ROOT}}pages/privacy">Privacy Policy</a></li>
+          <li><a href="{{ROOT}}pages/contact">Contact</a></li>
+          <li><a href="{{ROOT}}pages/terms">Terms of Use</a></li>
+          <li><a href="{{ROOT}}items/add">ADDDDDD</a></li>
+        </ul>
+      </li>
+    </ul>
+  </footer>
+  <amp-user-notification id="cookie-notice" layout="nodisplay">
+    <div>This site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies.
+      <br> Additional <a href="cookie.html">info</a>.
+      <button on="tap:cookie-notice.dismiss">I accept</button>
+    </div>
+  </amp-user-notification>
+
+</body>
+</html>
