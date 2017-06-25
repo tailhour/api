@@ -10,3 +10,4 @@ if (global.dev) {
 
 exports.item = require('./item')
 exports.category = require('./category')
+exports.page = require('./page')

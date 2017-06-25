@@ -35,17 +35,6 @@ exportModel.getAll = function(cb) {
   itemModel.find().then(cb)
 }
 
-/*
-return new Promise(function(resolve, reject) {
-    itemModel.find({ category: 2 }).select(_.fields).limit(5).then(function(dogsData) {
-      data.dogs = dogsData
-      resolve(data)
-    })
-  })
-  */
-
-
-
 exportModel.getOne = function(itemId, cb) {
   return new Promise(function(resolve, reject) {
     if (!mongoose.Types.ObjectId.isValid(itemId)) {
@@ -66,10 +55,9 @@ exportModel.getList = function(cb) {
       cats: [],
       dogs: []
     }
-    let _cat
 
     for (var k in listData) {
-      _cat = cfg.app.cats[listData[k].category]
+      let _cat = cfg.app.cats[listData[k].category]
       _listData[_cat].push(listData[k])
     }
 

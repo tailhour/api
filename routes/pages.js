@@ -7,8 +7,7 @@ let multer = require('multer');
 let multipart = multer();
 
 let models = require('../models')
-const model = models.item
-const catModel = models.category
+const model = models.page
 
 //for xhr post requests 
 router.all('*', (req, res, next) => {
@@ -22,18 +21,38 @@ router.all('*', (req, res, next) => {
   next()
 })
 
+router.error = function (res) {
+  res.render('page', {
+    content:{
+      title: "OoOps something when wrong for this page : "
+    }
+  })
+}
 
 router.get('/:pageId?', (req, res) => {
   const pageId = req.params.pageId
-  if (pageId === "contact") {
+  let isStatic = !!(cfg.app.static.indexOf(pageId) !== -1)
 
-  } else if (pageId === "ads") {
-
-  } else {
-    res.render('pages/default', { 
-      content: "Not static PAGE : " + pageId 
-    })
+  if (!isStatic) {
+    return router.error(res)
   }
+
+  model.one(pageId).then(pageData => {
+    res.render('page', {
+      content: pageData,
+      pageUrl: pageId
+    })
+  }, pageError => {
+    router.error(res)
+  })
+})
+
+router.post("ads", (req, res) => {
+
+})
+
+router.post("contact", multipart.fields([]), (req, res) => {
+    res.json({result: "OK"})
 })
 
 module.exports = router

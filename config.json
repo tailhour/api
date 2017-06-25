@@ -2,7 +2,7 @@
   "port": 3002,
   "version": 0.3,
   "mongo": {
-  	"host": "mongodb://localhost:27017/tailhour/",
+  	"host": "mongodb://127.0.0.1:27017/tailhour/",
   	"limit": 5
   },
   "handlebars": {
@@ -11,13 +11,14 @@
   },
   "app": {
   	"perPage": 3,
+    "static": ["about", "ads", "contact", "cookies", "policy", "terms"],
     "cats": ["birds", "cats", "dogs", "reptiles", "others"],
     "colors": [{"birds": "#eec000"}, {"cats": "#ed677a"}, {"dogs": "#607D8B"}],
     "types": ["list", "item", "image", "video"],
   	"locals": {
   		"menus": ["tail", "hour", "media", "spots", "tools"],
   		"subs": ["bird", "cat", "dog", "fish", "rabbit", "reptile"],
-  		"rootUrl": "http://192.168.1.131:3002/"
+  		"rootUrl": "http://example.local/"
   	}
   }
 }

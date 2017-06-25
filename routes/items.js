@@ -30,6 +30,32 @@ router.get('', (req, res) => {
   })
 })
 
+router.get('/add', (req, res) => {
+  console.log("-------- ITEM FORM ADD")
+  catModel.get().then(cats => {
+    res.render('add', {
+      categories: cats
+    })
+  })
+})
+
+/////////////////// TEMPORARY
+router.get('/category/:catId?', (req, res) => {
+  let catId = req.params.catId
+
+  if (catId) {
+    catModel.inc(catId, cats => {
+      res.json(cats);
+      // res.render('add', {})
+    })
+  } else {
+    catModel.get(cats => {
+      res.json(cats);
+      // res.render('add', {})
+    })
+  }
+})
+
 //itemId optional - append 
 // birds || cats || dogs main category HERE !!!
 
@@ -57,41 +83,13 @@ router.get('/:itemId/:pageId?', (req, res) => {
   }
 })
 
-router.get('/add', (req, res) => {
-  catModel.get().then(cats => {
-    res.render('add', {
-      categories: cats
-    })
-  })
-})
-
-/////////////////// TEMPORARY
-router.get('/category/:catId?', (req, res) => {
-  let catId = req.params.catId
-
-  if (catId) {
-    catModel.inc(catId, cats => {
-      res.json(cats);
-      // res.render('add', {})
-    })
-  } else {
-    catModel.get(cats => {
-      res.json(cats);
-      // res.render('add', {})
-    })
-  }
-})
-
 router.post('/cats', (req, res) => {
-    catModel.asave(req.body, cats => {
-      console.log("cb :::", cats)
-      res.json({ save: "ok" });
-      // res.render('add', {})
-    })
+  catModel.asave(req.body, cats => {
+    console.log("cb :::", cats)
+    res.json({ save: "ok" });
+    // res.render('add', {})
   })
-  //////////////////////////////////
-
-
+})
 
 //increment with promise and save items after that 
 // to do first insert and after that increment .... if successful 

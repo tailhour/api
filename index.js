@@ -36,7 +36,7 @@ app.disable('x-powered-by')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.locals.ROOT = "//192.168.1.131:3002/"
+app.locals.ROOT = "//example.local/"
 app.locals.CATS = cfg.app.cats
 
 app.use("/", require('./routes'));
