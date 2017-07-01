@@ -25,7 +25,7 @@ router.get('', (req, res) => {
   model.getList(itemsData => {
     res.render('list', {
       items: itemsData,
-      categories: cfg.app.cats
+      categories: cfg.locals.CATS
     })
   })
 })
@@ -62,13 +62,13 @@ router.get('/category/:catId?', (req, res) => {
 // router.get('/:itemId?', (req, res) => {
 router.get('/:itemId/:pageId?', (req, res) => {
   let itemId = req.params.itemId
-  let catId = cfg.app.cats.indexOf(itemId)
+  let catId = cfg.locals.CATS.indexOf(itemId)
 
   if (catId === -1) {
     model.getOne(itemId).then(item => {
       res.render('item', {
         item: item,
-        category: cfg.app.cats[item.category]
+        category: cfg.locals.CATS[item.category]
       })
     })
   } else if (catId !== -1) {

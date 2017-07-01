@@ -55,9 +55,8 @@ exportModel.getList = function(cb) {
       cats: [],
       dogs: []
     }
-
     for (var k in listData) {
-      let _cat = cfg.app.cats[listData[k].category]
+      let _cat = cfg.locals.CATS[listData[k].category]
       _listData[_cat].push(listData[k])
     }
 

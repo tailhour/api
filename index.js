@@ -23,21 +23,18 @@ cfgHbs.helpers = {
 }
 app.engine('hbs', hbs(cfgHbs));
 app.set('view engine', 'hbs');
+
 if (global.dev) {
   app.set('view cache', false);
 }
 
-//static content should be served by nginx not by node !!!
-//- EXPRESS setup
 app.use(express.static('static'))
-// app.use('/include', express.static('static'))
 app.disable('x-powered-by')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.locals.ROOT = "//example.local/"
-app.locals.CATS = cfg.app.cats
+app.locals = cfg.locals
 
 app.use("/", require('./routes'));
 

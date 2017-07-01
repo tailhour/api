@@ -427,8 +427,9 @@ form.amp-form-submit-success > input {
   padding: 20px;
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
-  width: 100%;
   margin: 0px;
+  left: 0px;
+  right: 0px;
 }
 
 ul.pages {

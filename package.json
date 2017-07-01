@@ -4,7 +4,7 @@
   "description": "tailHour ",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "npm link express && node .",
     "test": "npm test"
   },
   "author": "tail hour",

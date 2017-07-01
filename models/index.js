@@ -3,6 +3,8 @@ mongoose.Promise = require('bluebird')
 
 const cfg = require('../config.json')
 
+// global.db = mongoose.createConnection(cfg.mongo.host, { server: { poolSize: cfg.mongo.pollSize } });
+
 mongoose.connect(cfg.mongo.host, { server: { poolSize: cfg.mongo.pollSize } })
 if (global.dev) {
   mongoose.set('debug', true)

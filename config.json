@@ -2,23 +2,22 @@
   "port": 3002,
   "version": 0.3,
   "mongo": {
-  	"host": "mongodb://127.0.0.1:27017/tailhour/",
-  	"limit": 5
+    "host": "mongodb://127.0.0.1:27017/tailhour/",
+    "limit": 5
   },
   "handlebars": {
-      "extname": "hbs",
-      "defaultLayout": "default"
+    "extname": "hbs",
+    "defaultLayout": "default"
   },
   "app": {
-  	"perPage": 3,
+    "perPage": 3,
     "static": ["about", "ads", "contact", "cookies", "policy", "terms"],
-    "cats": ["birds", "cats", "dogs", "reptiles", "others"],
-    "colors": [{"birds": "#eec000"}, {"cats": "#ed677a"}, {"dogs": "#607D8B"}],
-    "types": ["list", "item", "image", "video"],
-  	"locals": {
-  		"menus": ["tail", "hour", "media", "spots", "tools"],
-  		"subs": ["bird", "cat", "dog", "fish", "rabbit", "reptile"],
-  		"rootUrl": "http://example.local/"
-  	}
+    "colors": [{ "birds": "#eec000" }, { "cats": "#ed677a" }, { "dogs": "#607D8B" }],
+    "types": ["list", "item", "image", "video"]
+  },
+  "locals": {
+    "ROOT": "//tailhour.local/",
+    "ROOTIMG": "//tailhour.local/static/",
+    "CATS": ["birds", "cats", "dogs", "reptiles", "others"]
   }
 }
