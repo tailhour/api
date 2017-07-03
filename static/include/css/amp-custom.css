@@ -455,22 +455,28 @@ ul.pages li {
 
 
 
-.birds-menu {
+.birds-menu, .birds-title, .birds-title > a {
   color: rgba(238, 192, 0, 0.75);
+  color: #eec000;
+  color: #abad19;
 }
 
-.cats-menu {
+.cats-menu, .cats-title, .cats-title > a {
   color: rgba(237, 103, 122, 0.75);
+  color: #ed677a;
 }
 
-.dogs-menu {
+.dogs-menu, .dogs-title, .dogs-title > a {
   color: rgba(171, 173, 25, 0.75);
+  color: #607D8B;
 }
 
-.reptiles-menu {
+.reptiles-menu, .reptiles-menu {
   color: rgba(164, 212, 214, 0.75);
+  color: #a4d4d6;
 }
 
 .others-menu {
   color: rgba(25, 162, 173, 0.75);
+  color: #19a2ad;
 }

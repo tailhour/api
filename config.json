@@ -12,11 +12,12 @@
   "app": {
     "perPage": 3,
     "static": ["about", "ads", "contact", "cookies", "policy", "terms"],
-    "colors": [{ "birds": "#eec000" }, { "cats": "#ed677a" }, { "dogs": "#607D8B" }],
+    "color": "#607D8B",
+    "colors": [{ "birds": "#abad19" }, { "cats": "#ed677a" }, { "dogs": "#607D8B" }],
     "types": ["list", "item", "image", "video"]
   },
   "locals": {
-    "ROOT": "//tailhour.local/",
+    "ROOT": "https://tailhour.local/",
     "ROOTIMG": "//tailhour.local/static/",
     "CATS": ["birds", "cats", "dogs", "reptiles", "others"]
   }

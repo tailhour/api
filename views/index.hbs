@@ -17,7 +17,8 @@
         {{#each items}}
             {{#if this}}
             <li>
-                <h3>{{@key}} <a href='{{../ROOT}}items/{{@key}}'>({{this.length}})</a></h3>
+                <h3 class='{{@key}}-title'><a href='{{../ROOT}}items/{{@key}}'> {{@key}} ({{this.length}})</a></h3>
+                <!-- {{../CATS.[0]}} -->
                 <amp-carousel width="480" height="320" layout="responsive" type="slides">
                 {{#each this}}
                     <div  class="indexp">

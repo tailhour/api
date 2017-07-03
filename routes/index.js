@@ -16,9 +16,6 @@ router.get('/', (req, res, next) => {
       categories: cfg.app.cats
     })
   })
-  // res.render('index', {
-  //   message: "MEssage for template"
-  // });
 })
 
 module.exports = router;

@@ -17,6 +17,8 @@ var itemSchema = new Schema({
   created: { type: Date, default: Date.now }
 }, { versionKey: false })
 
+itemSchema.index({ title: 'text', text: 'text' });
+
 itemSchema.pre('save', function(next) {
   if (!this.href) {
     this.href = this.title.substr(0, 25).trim().replace(/[^a-zA-Z0-9]+/g, "-")
@@ -72,8 +74,8 @@ exportModel.createPage = function(length, active) {
     return []
   }
 
-  for (i; i <= length; i ++) {
-    arr.push(((i === active) ? {active: i}: i))
+  for (i; i <= length; i++) {
+    arr.push(((i === active) ? { active: i } : i))
   }
   return arr
 }
@@ -100,6 +102,59 @@ exportModel.getCategory = function(catData, cb) {
     _catData.pages = exportModel.createPage(_totalPages, (page + 1))
     cb(_catData)
   })
+}
+
+// bug if have several results and for first one get category ID and others are broken ....
+function searchFunc(sData, cb) {
+  let query = {
+    $text: {
+      $search: sData.term
+    }
+  }
+
+  if (sData.categoryId || sData.categoryId === 0) {
+    query.category = sData.categoryId
+  }
+
+  itemModel.find(query).then(itemsData => {
+    if (!sData.categoryId && itemsData.length > 0) {
+      sData.categoryId = itemsData[0].category
+      sData.category = cfg.locals.CATS[sData.categoryId]
+    }
+
+    sData.data = itemsData || []
+    cb(sData)
+  })
+}
+
+//return Promise
+// todo refactor THIS no more than 2 callbacks ....
+// 1. get category ID from referal
+// 2. search in category ID 
+exportModel.search = function(searchData, cb) {
+  let result = {
+      referer: searchData.referer,
+      term: searchData.term,
+      // category: 'cats',
+      // categoryId: 1,
+      data: []
+    }
+    // search from single item
+  if (mongoose.Types.ObjectId.isValid(result.referer)) {
+    itemModel.findById(result.referer).limit(1).then(itemData => {
+      result.category = cfg.locals.CATS[itemData.category]
+      result.categoryId = itemData.category
+
+      searchFunc(result, cb)
+    })
+  } else if (cfg.locals.CATS.indexOf(result.referer) !== -1) {
+    result.category = result.referer
+    result.categoryId = cfg.locals.CATS.indexOf(result.referer)
+
+    searchFunc(result, cb)
+  } else {
+    searchFunc(result, cb)
+  }
 }
 
 exportModel.getFields = function(fields, cb) {

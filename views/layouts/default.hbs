@@ -39,6 +39,17 @@
  .float-right { float: right; }
  .float-left { float: left; }
 
+{{# if ccolor }}
+   .chead, .cfooter {
+    /*background: #eec000;*/
+    background-color: {{ccolor}};
+   }
+
+   .chead h2.slogan {
+      color: {{ccolor}};
+   }
+{{/if}}
+
   </style>
 
 
@@ -72,12 +83,12 @@
     </ul>
   </amp-sidebar>
 
-  <header>
+  <header class="chead">
     <a id="logo" href="/" class="abs">TAILHOUR</a>
     <h2 class="abs slogan">An hour with your pets</h2>
     <a id="mobile-menu" on="tap:mobilemenu.toggle" class="abs icons icon-menu"></a>
-    <form method="POST" action="/search" target="_top">
-      <input name="search" type="search" placeholder="Search" class="abs" >
+    <form method="GET" action="{{ROOT}}items/search" target="_top">
+      <input name="term" type="search" placeholder="Search" class="abs" >
       <input type="submit" value="?" class="abs" >
     </form>
     <a id="user-menu" on="tap:usermenu.toggle" class="abs icons icon-user"></a>
@@ -85,7 +96,7 @@
 
   {{{ body }}}
 
-  <footer>
+  <footer class="cfooter">
     <ul>
       <li>
         <form method="POST" action-xhr="{{ROOT}}subscribe" target="_top">

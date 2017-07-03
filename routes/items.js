@@ -31,11 +31,41 @@ router.get('', (req, res) => {
 })
 
 router.get('/add', (req, res) => {
-  console.log("-------- ITEM FORM ADD")
   catModel.get().then(cats => {
     res.render('add', {
       categories: cats
     })
+  })
+})
+
+// Create field text index !!!
+// db.items.createIndex({"title": "text"})
+//------------
+// find category from referrer 
+// search for this category ...
+router.get('/search', (req, res) => {
+  let searchTerm = req.query.term.trim()
+  let ref = req.headers.referrer || req.headers.referer
+  if (ref) {
+    ref = ref.split("/")
+    ref = ref[(ref.length -1)]
+  }
+  //db.items.createIndex({"title": "text"})
+  // model.search({term: searchTerm, referer: ref}).then(itemsData => {
+  model.search({term: searchTerm, referer: ref}, itemsData => {
+    if (itemsData.data.length === 0) {
+      return res.render('category', {
+        items: []
+      })
+    }
+    let categoryColor = getColor(itemsData.categoryId)
+    console.log(itemsData)
+      res.render('category', {
+        items: itemsData.data,
+        category: itemsData.category,
+        ccolor: categoryColor
+      })
+
   })
 })
 
@@ -56,6 +86,11 @@ router.get('/category/:catId?', (req, res) => {
   }
 })
 
+function getColor(categoryId) {
+  let catKey = cfg.locals.CATS[categoryId]
+  return cfg.app.colors[categoryId][catKey] || cfg.app.color
+}
+
 //itemId optional - append 
 // birds || cats || dogs main category HERE !!!
 
@@ -66,18 +101,24 @@ router.get('/:itemId/:pageId?', (req, res) => {
 
   if (catId === -1) {
     model.getOne(itemId).then(item => {
+      let catKey = cfg.locals.CATS[item.category]
+
+      let categoryColor = cfg.app.colors[item.category][catKey] || cfg.app.color
       res.render('item', {
         item: item,
-        category: cfg.locals.CATS[item.category]
+        category: cfg.locals.CATS[item.category],
+        ccolor: categoryColor
       })
     })
   } else if (catId !== -1) {
     let pageId = req.params.pageId || 1
+    let categoryColor = cfg.app.colors[catId][itemId] || cfg.app.color
     model.getCategory({ category: catId, page: pageId }, items => {
       res.render('category', {
         items: items.data,
         category: itemId,
-        pages: items.pages
+        pages: items.pages,
+        ccolor: categoryColor
       })
     })
   }
