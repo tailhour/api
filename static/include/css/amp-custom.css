@@ -416,6 +416,7 @@ form.amp-form-submit-success > input {
 
 
 /* INDEX PAGE >>>>> */
+
 .indexp {
   position: relative;
 }
@@ -453,25 +454,30 @@ ul.pages li {
   font-weight: bold;
 }
 
-
-
-.birds-menu, .birds-title, .birds-title > a {
+.birds-menu,
+.birds-title,
+.birds-title > a {
   color: rgba(238, 192, 0, 0.75);
   color: #eec000;
   color: #abad19;
 }
 
-.cats-menu, .cats-title, .cats-title > a {
+.cats-menu,
+.cats-title,
+.cats-title > a {
   color: rgba(237, 103, 122, 0.75);
   color: #ed677a;
 }
 
-.dogs-menu, .dogs-title, .dogs-title > a {
+.dogs-menu,
+.dogs-title,
+.dogs-title > a {
   color: rgba(171, 173, 25, 0.75);
   color: #607D8B;
 }
 
-.reptiles-menu, .reptiles-menu {
+.reptiles-menu,
+.reptiles-menu {
   color: rgba(164, 212, 214, 0.75);
   color: #a4d4d6;
 }
@@ -479,4 +485,19 @@ ul.pages li {
 .others-menu {
   color: rgba(25, 162, 173, 0.75);
   color: #19a2ad;
+}
+
+
+/* PAGE CONTENT */
+
+.ptitle {
+  font-size: 22px;
+  letter-spacing: .5px;
+  color: #8a8a8a;
+  text-transform: uppercase;
+  padding: 4px 0 8px 5px;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  text-transform: uppercase;
+  text-transform: uppercase;
 }

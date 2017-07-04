@@ -13,14 +13,14 @@
 <!-- START BODY SECTION -->
 <main>
 	<section>
-        <h1>{{content.title}}</h1>
+        <h2 class="ptitle">{{content.title}}</h2>
         {{{content.text}}}
 
         {{#if content.formContact}}
             <form method='POST' action-xhr='{{ROOT}}pages/{{pageUrl}}' class='add'>
             <input name='title' type='text' placeholder='Title' required>
             <textarea name='text' cols='30' rows='4' required></textarea>
-            <input type='submit' value='ADD' >
+            <input type='submit' value='POST' >
             <div submit-success> Thank you for the post !</div>
             <div submit-error>Error ocure during form submmition !</div>
             </form>
@@ -30,7 +30,7 @@
             <form method='POST' action-xhr='{{ROOT}}pages/{{pageUrl}}' class='add'>
             <input name='title' type='text' placeholder='Title' required>
             <textarea name='text' cols='30' rows='4' required></textarea>
-            <input type='submit' value='ADD' >
+            <input type='submit' value='POST' >
             <div submit-success> Thank you for the post !</div>
             <div submit-error>Error ocure during form submmition !</div>
             </form>
