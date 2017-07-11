@@ -14,7 +14,7 @@ router.all('*', (req, res, next) => {
     res.setHeader('Content-type', 'application/json');
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*.ampproject.org');
-    res.setHeader('AMP-Access-Control-Allow-Source-Origin', 'http://' + req.headers.host);
+    res.setHeader('AMP-Access-Control-Allow-Source-Origin', 'https://' + req.headers.host);
     res.setHeader('Access-Control-Expose-Headers', 'AMP-Access-Control-Allow-Source-Origin');
   }
   next()

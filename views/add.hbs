@@ -19,8 +19,15 @@
 	      	<option value="{{this.categoryId}}">{{this.title}} ({{this.total}})</option>
 	      {{/each}}
 	      </select>
-	      <input name="image" type="text" placeholder="Image" required>
-	      <textarea name="text" cols="30" rows="4" required></textarea>
+	      <textarea name="text[intro]" cols="30" rows="4" placeholder="Intro" class="wide" required></textarea>
+	      <hr>
+	      <textarea name="text[part1]" cols="10" rows="4" placeholder="Part1" class="fleft"></textarea>
+	      <textarea name="text[part2]" cols="20" rows="4" placeholder="Part2" class="fleft"></textarea>
+	      <hr style="clear: both;">
+	      <textarea name="text[end]" cols="30" rows="4" placeholder="End" class="wide" required></textarea>
+	      <input name="media[intro]" type="text" placeholder="Image" required>
+	      <input name="media[video]" type="text" placeholder="Video">
+	      <input name="media[gallery]" type="text" placeholder="Gallery (;)">
 	      <input type="submit" value="ADD" >
 	      
 	      <div submit-success>

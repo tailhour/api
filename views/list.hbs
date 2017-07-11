@@ -21,7 +21,7 @@
                 <amp-carousel width="480" height="320" layout="responsive" type="slides">
                 {{#each this}}
                     <a href="{{../../ROOT}}items/{{this._id}}">
-                    <amp-img src="{{../../ROOT}}images/{{@../key}}/sm/{{this.image}}.jpg" srcset="{{../../ROOT}}images/{{@../key}}/{{this.image}}.jpg 960w, {{../../ROOT}}images/{{@../key}}/m/{{this.image}}.jpg 640w, {{../../ROOT}}images/{{@../key}}/sm/{{this.image}}.jpg 320w" width="480" height="320" layout="responsive" alt="Bird">
+                    <amp-img src="{{../../ROOT}}images/{{@../key}}/sm/{{this.media.intro}}.jpg" srcset="{{../../ROOT}}images/{{@../key}}/{{this.media.intro}}.jpg 960w, {{../../ROOT}}images/{{@../key}}/m/{{this.media.intro}}.jpg 640w, {{../../ROOT}}images/{{@../key}}/sm/{{this.media.intro}}.jpg 320w" width="480" height="320" layout="responsive" alt="Bird">
                     </amp-img>
                     </a>
                 {{/each}}

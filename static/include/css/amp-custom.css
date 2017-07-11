@@ -399,11 +399,18 @@ footer label {
 
 form.add input,
 form.add select,
-form.add textarea {
+form.add textarea.wide {
   min-width: 40vw;
   padding: 10px;
-  margin: 20px;
+  margin: 10px;
   overflow: hidden;
+}
+
+.fleft {
+  float: left;
+  min-width: 25vw;
+  padding: 10px;
+  margin: 10px;
 }
 
 form.add input[type=submit] {
@@ -413,6 +420,7 @@ form.add input[type=submit] {
 form.amp-form-submit-success > input {
   display: none
 }
+
 
 
 /* INDEX PAGE >>>>> */

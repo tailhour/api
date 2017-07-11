@@ -18,10 +18,10 @@
       <li class="lheight">
         <h3>{{this.title}}</h3>
         <a href="{{../ROOT}}items/{{this._id}}">
-          <amp-img src="{{../ROOT}}images/{{../category}}/sm/{{this.image}}.jpg" srcset="{{../ROOT}}images/{{../category}}/{{this.image}}.jpg 960w, {{../ROOT}}images/{{../category}}/m/{{this.image}}.jpg 640w, {{../ROOT}}images/{{../category}}/sm/{{this.image}}.jpg 320w" width="480" height="320" layout="responsive" alt="Bird">
+          <amp-img src="{{../ROOT}}images/{{../category}}/sm/{{this.media.intro}}.jpg" srcset="{{../ROOT}}images/{{../category}}/{{this.media.intro}}.jpg 960w, {{../ROOT}}images/{{../category}}/m/{{this.media.intro}}.jpg 640w, {{../ROOT}}images/{{../category}}/sm/{{this.media.intro}}.jpg 320w" width="480" height="320" layout="responsive" alt="Bird">
           </amp-img>
         </a>
-        <div class="elip-box"><span class="elips">{{this.text}}</span></div>
+        <div class="elip-box"><span class="elips">{{this.text.intro}}</span></div>
       </li>
       {{/each}}
     </ul>

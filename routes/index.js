@@ -6,6 +6,7 @@ let models = require('../models')
 
 router.use('/items', require('./items'))
 router.use('/pages', require('./pages'))
+router.use('/users', require('./users'))
 router.use('/api', require('./api'))
 
 router.get('/', (req, res, next) => {

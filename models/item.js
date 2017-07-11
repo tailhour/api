@@ -11,8 +11,17 @@ const exportModel = {};
 var itemSchema = new Schema({
   title: String,
   href: String,
-  image: String,
-  text: String,
+  text: {
+    intro: String,
+    part1: String,
+    part2: String,
+    end: String
+  },
+  media: {
+    intro: String,
+    video: String,
+    gallery: Schema.Types.Mixed
+  },
   category: { type: Number, default: 0 },
   created: { type: Date, default: Date.now }
 }, { versionKey: false })
@@ -21,7 +30,7 @@ itemSchema.index({ title: 'text', text: 'text' });
 
 itemSchema.pre('save', function(next) {
   if (!this.href) {
-    this.href = this.title.substr(0, 25).trim().replace(/[^a-zA-Z0-9]+/g, "-")
+    this.href = this.title.substr(0, 30).trim().replace(/[^a-zA-Z0-9]+/g, "-")
     this.href = this.href.toLowerCase()
   }
 
@@ -94,7 +103,7 @@ exportModel.getCategory = function(catData, cb) {
 
     _catData.data = catData.slice((cfg.app.perPage * page), (cfg.app.perPage * (page + 1)))
     for (var k in _catData.data) {
-      _catData.data[k].text = _catData.data[k].text.substr(0, 300)
+      _catData.data[k].text.intro = _catData.data[k].text.intro.substr(0, 300)
     }
 
     _totalPages = Math.ceil(catData.length / cfg.app.perPage)
@@ -165,17 +174,32 @@ exportModel.getFields = function(fields, cb) {
 }
 
 exportModel.asave = function(aData, cb) {
-  let saveData;
+  let saveData = {}
 
   if (aData.title && aData.text) {
-    saveData = itemModel({
-      title: aData.title,
-      image: aData.image,
-      text: aData.text,
-      category: aData.category
-    });
+    //clear text from not required fields
+    (!aData.text.part1) && (delete aData.text.part1);
+    (!aData.text.part2) && (delete aData.text.part2);
+    
+    (!aData.media.video) && (delete aData.media.video);
 
-    saveData.save().then(cb);
+    if (!aData.media.gallery) {
+      delete aData.media.gallery;
+    } else {
+      aData.media.gallery = aData.media.gallery.split(";")
+      aData.media.gallery = aData.media.gallery.map(val => val.trim())
+    }
+
+    saveData = {
+      title: aData.title,
+      text: aData.text,
+      media: aData.media,
+      category: aData.category
+    };
+
+    console.log(saveData)
+
+    itemModel(saveData).save().then(cb);
   }
 
 }

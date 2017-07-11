@@ -1,0 +1,5 @@
+{ "_id" : { "$oid" : "594c5383ad37ed0e588239a3" }, "title" : "birds", "created" : { "$date" : "2017-06-23T02:32:19.903+0300" }, "categoryId" : 0, "total" : 5 }
+{ "_id" : { "$oid" : "594c539ead37ed0e588239a4" }, "href" : "cats", "title" : "cats", "created" : { "$date" : "2017-06-23T02:32:46.358+0300" }, "categoryId" : 1, "total" : 0 }
+{ "_id" : { "$oid" : "594c53a8ad37ed0e588239a5" }, "href" : "dogs", "title" : "dogs", "created" : { "$date" : "2017-06-23T02:32:56.292+0300" }, "categoryId" : 2, "total" : 2 }
+{ "_id" : { "$oid" : "594c53cead37ed0e588239a6" }, "href" : "reptiles", "title" : "reptiles", "created" : { "$date" : "2017-06-23T02:33:34.747+0300" }, "categoryId" : 3, "total" : 2 }
+{ "_id" : { "$oid" : "594c53e4ad37ed0e588239a7" }, "href" : "others", "title" : "others", "created" : { "$date" : "2017-06-23T02:33:56.550+0300" }, "categoryId" : 4, "total" : 0 }
